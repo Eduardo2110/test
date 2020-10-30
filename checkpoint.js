@@ -11,7 +11,10 @@ function mayorMenor(numeros) {
   // y 2 es el número más chico (menor) dentro del arreglo [9, 17, 6, 2, 4]
 
   // Tu código aca:
-
+    let nuevoArray = [];
+    numeros = numeros.sort((a, b) => a - b);
+    nuevoArray.push(numeros[0], numeros[numeros.length - 1]);
+    return nuevoArray;
 }
 
 function mismaCantidadCaracteres(strings, caracteres) {
@@ -23,7 +26,8 @@ function mismaCantidadCaracteres(strings, caracteres) {
   // mismaCantidadCaracteres(['javascript', 'pedro', 'amigo', 'parque'], 5) debe retornar ['pedro', 'amigo']
 
   // Tu código aca:
-
+    let nuevoString = strings.filter(x => x.length <= caracteres);
+    return nuevoString;
 }
 
 function sumaTodosPrimos(array) {
@@ -36,7 +40,14 @@ function sumaTodosPrimos(array) {
   // Nota: Podes usar la funcion 'esPrimo' resuelta en la homework JSII.
 
   // Tu código aca:
-
+  let primos= array.filter( numero => {
+    if (numero == 0 || numero == 1 || numero == 4 || numero < 0) return false;
+    for (let i = 2; i < numero / 2; i++) {
+        if (numero % i == 0) return false;
+    }return numero;
+  })
+  
+   return(primos.reduce((acc,x)=> acc + x));
 }
 
 function sumArray(array, n) {
@@ -54,7 +65,15 @@ function sumArray(array, n) {
   // por lo tanto también debería devolver false en este caso
 
   // Tu código aca:
+    for (let i = 0; i < array.length; i += 1) {
+        for (let j = 0; j < array.length; j += 1) {
+            if (i != j && (array[i] + array[j]) == n) {
+                return true;
+            }
+        };
 
+    }
+    return false;
 };
 
 function agregaPropiedad(amigos, propiedad) {
@@ -67,9 +86,11 @@ function agregaPropiedad(amigos, propiedad) {
   // Ej:
   // var amigos = [{ nombre: 'toni' } , { nombre: 'Emi', edad: 25 }];
   // agregaPropiedad(amigos, 'edad') debe devolver [{ nombre: 'toni', edad: null } , { nombre: 'Emi', edad: 25 }]
-
+    for (var i = 0; i < amigos.length; i++) {
+        if (!amigos[i][propiedad]) amigos[i][propiedad] = null;
+    }
+    return amigos;
 }
-
 // =======================================================================
 
 function crearClaseViajero() {
@@ -79,7 +100,10 @@ function crearClaseViajero() {
       // Inicializar las propiedades del viajero con los valores recibidos como argumento
 
       // Tu código aca:
-
+        this.nombre = nombre;
+        this.edad = edad;
+        this.paises = paises;
+        this.compañeros = compañeros
     }
 
     addCompañero(nombre, nacionalidad, edad) {
@@ -89,14 +113,19 @@ function crearClaseViajero() {
       // No debe retornar nada.
 
       // Tu código aca:
-
+            this.compañeros.push({
+                nombre: nombre,
+                nacionalidad: nacionalidad,
+                edad: edad
+            });
     }
-
+    
     addPais(pais) {
       // El método 'AddPais' recibe un string 'pais' y debe agregarlo al arreglo de paises del viajero.
       // No debe retornar nada.
 
       // Tu código aca:
+            this.paises.push(pais);
 
     }
 
@@ -108,7 +137,12 @@ function crearClaseViajero() {
       // viajero.getCompañeros() debería devolver ['John', 'Peter']
 
       // Tu código aca:
-      
+      let nombresCompañeros = [];
+      for (var i = 0; i < this.compañeros.length; i++) {
+        nombresCompañeros.push(this.compañeros[i].nombre);
+      }
+      return nombresCompañeros;
+    
     }
 
     getPaises() {
@@ -117,6 +151,7 @@ function crearClaseViajero() {
       // viajero.getPaises() debe devolver ['Belgica', 'Estados Unidos', 'Islandia']
 
       // Tu código aca:
+      return this.paises;
       
     }
 
@@ -138,8 +173,12 @@ function crearClaseViajero() {
       // viajero.getPromedioEdad() debería devolver 25 ya que (27 + 23) / 2 = 25
 
       // Tu código aca:
-
-    }
+            let suma = 0;
+            for (var i = 0; i < this.compañeros.length; i++) {
+                suma += this.compañeros[i].edad;
+            }
+            return suma * 0.5
+        }
   };
 
   return Viajero;
@@ -165,7 +204,14 @@ function filtrar(funcion) {
   // productos.filtrar(function(p) {
   //   return p.price >= 50;
   // }) => [{price: 100, name:'tv'}]
-
+  
+    let newArray = [];
+    Array.prototype.filtrar = function(funcion) {
+       //for (var i = 0; i <= productos.length; i++) {
+       //if (funcion) newArray.push(productos[i])
+      //}
+      return newArray;  
+    }
 };
 
 // No modifiques nada debajo de esta linea
