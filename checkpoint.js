@@ -9,12 +9,7 @@ function mayorMenor(numeros) {
   // mayorMenor([9, 17, 6, 2, 4]) debe retornar [2, 17]
   // ya que 17 es el número más grande (mayor) dentro del arreglo [9, 17, 6, 2, 4]
   // y 2 es el número más chico (menor) dentro del arreglo [9, 17, 6, 2, 4]
-
   // Tu código aca:
-    let nuevoArray = [];
-    numeros = numeros.sort((a, b) => a - b);
-    nuevoArray.push(numeros[0], numeros[numeros.length - 1]);
-    return nuevoArray;
 }
 
 function mismaCantidadCaracteres(strings, caracteres) {
@@ -24,10 +19,7 @@ function mismaCantidadCaracteres(strings, caracteres) {
   // Ej:
   // mismaCantidadCaracteres(['hi', 'hello', 'ni hao', 'guten tag'], 2) debe retornar ['hi'] ya que 'hi' tiene 2 caracteres
   // mismaCantidadCaracteres(['javascript', 'pedro', 'amigo', 'parque'], 5) debe retornar ['pedro', 'amigo']
-
   // Tu código aca:
-    let nuevoString = strings.filter(x => x.length <= caracteres);
-    return nuevoString;
 }
 
 function sumaTodosPrimos(array) {
@@ -38,23 +30,13 @@ function sumaTodosPrimos(array) {
   // Ej:
   // sumaTodosPrimos([1, 5, 2, 9, 3, 4, 11]) devuelve 5 + 2 + 3 + 11 = 21
   // Nota: Podes usar la funcion 'esPrimo' resuelta en la homework JSII.
-
   // Tu código aca:
-  let primos= array.filter( numero => {
-    if (numero == 0 || numero == 1 || numero == 4 || numero < 0) return false;
-    for (let i = 2; i < numero / 2; i++) {
-        if (numero % i == 0) return false;
-    }return numero;
-  })
-  
-   return(primos.reduce((acc,x)=> acc + x));
 }
 
 function sumArray(array, n) {
   // La función llamada 'sumArray' recibe como argumento un arreglo de números ordenados llamado 'array' y un número
   // entero llamdo 'n' y debe devolver true si alguna combinación de dos números cualesquiera del arreglo sumados
   // dan n, y devuelva false si ninguna combinación de dos números sumados da como resultado el número n.
-
   // Ej:
   // sumArray([2,5,7,10,11,15,20], 13)  debería devolver true ya que 2 + 11 = 13
   // sumArray([2,5,7,10,11,15,20], 14)  debería devolver false ya que no es posible sumar 14 con dos números del arreglo
@@ -63,18 +45,8 @@ function sumArray(array, n) {
   // Ej:
   // sumArray([2,5,7,10,11,15,20], 4)  Si bien 2 + 2 = 4 no está permitido sumar el mismo número dos veces
   // por lo tanto también debería devolver false en este caso
-
   // Tu código aca:
-    for (let i = 0; i < array.length; i += 1) {
-        for (let j = 0; j < array.length; j += 1) {
-            if (i != j && (array[i] + array[j]) == n) {
-                return true;
-            }
-        };
-
-    }
-    return false;
-};
+}
 
 function agregaPropiedad(amigos, propiedad) {
   // La funcion llamada 'agregaPropiedad' recibe como argumento un array llamado 'amigos' que contiene
@@ -86,10 +58,6 @@ function agregaPropiedad(amigos, propiedad) {
   // Ej:
   // var amigos = [{ nombre: 'toni' } , { nombre: 'Emi', edad: 25 }];
   // agregaPropiedad(amigos, 'edad') debe devolver [{ nombre: 'toni', edad: null } , { nombre: 'Emi', edad: 25 }]
-    for (var i = 0; i < amigos.length; i++) {
-        if (!amigos[i][propiedad]) amigos[i][propiedad] = null;
-    }
-    return amigos;
 }
 // =======================================================================
 
@@ -98,12 +66,7 @@ function crearClaseViajero() {
     constructor(nombre, edad, paises, compañeros) {
       // El constructor de la clase Viajero recibe nombre (string), edad (integer), paises (array de strings), compañeros (array de objetos)
       // Inicializar las propiedades del viajero con los valores recibidos como argumento
-
       // Tu código aca:
-        this.nombre = nombre;
-        this.edad = edad;
-        this.paises = paises;
-        this.compañeros = compañeros
     }
 
     addCompañero(nombre, nacionalidad, edad) {
@@ -111,22 +74,13 @@ function crearClaseViajero() {
       // debe agregar un objeto:
       // { nombre: nombre, nacionalidad: nacionalidad, edad: edad} al arreglo de compañeros del viajero.
       // No debe retornar nada.
-
       // Tu código aca:
-            this.compañeros.push({
-                nombre: nombre,
-                nacionalidad: nacionalidad,
-                edad: edad
-            });
     }
-    
+
     addPais(pais) {
       // El método 'AddPais' recibe un string 'pais' y debe agregarlo al arreglo de paises del viajero.
       // No debe retornar nada.
-
       // Tu código aca:
-            this.paises.push(pais);
-
     }
 
     getCompañeros() {
@@ -135,14 +89,7 @@ function crearClaseViajero() {
       // Ej:
       // Suponiendo que el viajero tiene estos compañeros: [{nombre: 'John', nacionalidad: "Australiano", edad: 27},{nombre: 'Peter', nacionalidad: "Belga", edad: 23}]
       // viajero.getCompañeros() debería devolver ['John', 'Peter']
-
       // Tu código aca:
-      let nombresCompañeros = [];
-      for (var i = 0; i < this.compañeros.length; i++) {
-        nombresCompañeros.push(this.compañeros[i].nombre);
-      }
-      return nombresCompañeros;
-    
     }
 
     getPaises() {
@@ -152,7 +99,6 @@ function crearClaseViajero() {
 
       // Tu código aca:
       return this.paises;
-      
     }
 
     getPromedioEdad() {
@@ -171,15 +117,9 @@ function crearClaseViajero() {
       //   }]
       // }
       // viajero.getPromedioEdad() debería devolver 25 ya que (27 + 23) / 2 = 25
-
       // Tu código aca:
-            let suma = 0;
-            for (var i = 0; i < this.compañeros.length; i++) {
-                suma += this.compañeros[i].edad;
-            }
-            return suma * 0.5
-        }
-  };
+    }
+  }
 
   return Viajero;
 }
@@ -204,15 +144,15 @@ function filtrar(funcion) {
   // productos.filtrar(function(p) {
   //   return p.price >= 50;
   // }) => [{price: 100, name:'tv'}]
-  
-    let newArray = [];
-    Array.prototype.filtrar = function(funcion) {
-       //for (var i = 0; i <= productos.length; i++) {
-       //if (funcion) newArray.push(productos[i])
-      //}
-      return newArray;  
-    }
-};
+
+  let newArray = [];
+  Array.prototype.filtrar = function (funcion) {
+    //for (var i = 0; i <= productos.length; i++) {
+    //if (funcion) newArray.push(productos[i])
+    //}
+    return newArray;
+  };
+}
 
 // No modifiques nada debajo de esta linea
 //
@@ -224,5 +164,5 @@ module.exports = {
   sumArray,
   agregaPropiedad,
   crearClaseViajero,
-  filtrar
-}
+  filtrar,
+};
