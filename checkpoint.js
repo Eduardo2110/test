@@ -10,8 +10,13 @@ function mayorMenor(numeros) {
   // ya que 17 es el número más grande (mayor) dentro del arreglo [9, 17, 6, 2, 4]
   // y 2 es el número más chico (menor) dentro del arreglo [9, 17, 6, 2, 4]
   // Tu código aca:
+  arrayord=numeros.sort((a,b) => a-b)
+  /// console.log(numeros)
+  arrayfinal=[arrayord[0],arrayord[arrayord.length-1]]
+  // console.log(arrayfinal)
+  return arrayfinal 
 }
-
+// mayorMenor([2,3,4,5,10,23,1])
 function mismaCantidadCaracteres(strings, caracteres) {
   // La función llamada 'mismaCantidadCaracteres', recibe como argumento un arreglo de strings llamado 'strings'
   // y un numero entero llamado 'caracteres'
@@ -20,6 +25,26 @@ function mismaCantidadCaracteres(strings, caracteres) {
   // mismaCantidadCaracteres(['hi', 'hello', 'ni hao', 'guten tag'], 2) debe retornar ['hi'] ya que 'hi' tiene 2 caracteres
   // mismaCantidadCaracteres(['javascript', 'pedro', 'amigo', 'parque'], 5) debe retornar ['pedro', 'amigo']
   // Tu código aca:
+  let arrayreturn=[]
+  for (let i = 0; i < strings.length; i++){
+    //console.log(strings[i])
+    if (strings[i].length===caracteres){
+      arrayreturn.push(strings[i])    
+    }    
+  }
+  //console.log(arrayreturn)
+  return arrayreturn
+}
+//mismaCantidadCaracteres(['lolo','gay','jij'],3)
+
+// este me lo robe de por ahi
+function esPrimardo(numero) {
+  if (numero < 2) return false
+  for (let i = 2; i<= numero**0.5; i++){
+    if (numero%i === 0)
+      return false
+  }
+  return true
 }
 
 function sumaTodosPrimos(array) {
@@ -31,7 +56,16 @@ function sumaTodosPrimos(array) {
   // sumaTodosPrimos([1, 5, 2, 9, 3, 4, 11]) devuelve 5 + 2 + 3 + 11 = 21
   // Nota: Podes usar la funcion 'esPrimo' resuelta en la homework JSII.
   // Tu código aca:
+  let suma=0
+  for(let i=0; i<array.length; i++){
+    //console.log(array[i])
+    if(esPrimardo(array[i]))
+      suma += array[i]
+      //console.log(suma)
+  }
+  return suma
 }
+//sumaTodosPrimos([1, 5, 2, 9, 3, 4, 11])
 
 function sumArray(array, n) {
   // La función llamada 'sumArray' recibe como argumento un arreglo de números ordenados llamado 'array' y un número
@@ -46,7 +80,18 @@ function sumArray(array, n) {
   // sumArray([2,5,7,10,11,15,20], 4)  Si bien 2 + 2 = 4 no está permitido sumar el mismo número dos veces
   // por lo tanto también debería devolver false en este caso
   // Tu código aca:
+  for(let j = 0 ; j<array.length ; j++) {
+    for(let i = 0 ; i<array.length ; i++ ){
+      if (j!==i){
+        let sum=array[j]+array[i]
+        //console.log(sum)
+        if (sum===n) return true
+      }
+    }
+  };
+  return false
 }
+console.log(sumArray([2,5,7,10,11,15,20], ))
 
 function agregaPropiedad(amigos, propiedad) {
   // La funcion llamada 'agregaPropiedad' recibe como argumento un array llamado 'amigos' que contiene
