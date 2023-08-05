@@ -91,7 +91,7 @@ function sumArray(array, n) {
   };
   return false
 }
-console.log(sumArray([2,5,7,10,11,15,20], ))
+//console.log(sumArray([2,5,7,10,11,15,20], ))
 
 function agregaPropiedad(amigos, propiedad) {
   // La funcion llamada 'agregaPropiedad' recibe como argumento un array llamado 'amigos' que contiene
@@ -103,8 +103,21 @@ function agregaPropiedad(amigos, propiedad) {
   // Ej:
   // var amigos = [{ nombre: 'toni' } , { nombre: 'Emi', edad: 25 }];
   // agregaPropiedad(amigos, 'edad') debe devolver [{ nombre: 'toni', edad: null } , { nombre: 'Emi', edad: 25 }]
+  for(let i=0; i<amigos.length ; i++){
+    let test = Object.keys(amigos[i]);
+    //console.log(test.includes(propiedad))
+    if (!(test.includes(propiedad))){
+      amigos[i].edad= null
+      //console.log('no tiene')
+    } 
+  }
+  //console.log(amigos)
+  return(amigos)
 }
 // =======================================================================
+//var amigos = [{ nombre: 'toni' } , { nombre: 'Emi', edad: 25 }];
+//agregaPropiedad(amigos, 'edad')
+//console.log(amigos)
 
 function crearClaseViajero() {
   class Viajero {
