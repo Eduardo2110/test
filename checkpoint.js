@@ -125,6 +125,10 @@ function crearClaseViajero() {
       // El constructor de la clase Viajero recibe nombre (string), edad (integer), paises (array de strings), compañeros (array de objetos)
       // Inicializar las propiedades del viajero con los valores recibidos como argumento
       // Tu código aca:
+      this.nombre = nombre;
+      this.edad = edad;
+      this.paises = paises;
+      this.compañeros = compañeros;
     }
 
     addCompañero(nombre, nacionalidad, edad) {
@@ -133,12 +137,15 @@ function crearClaseViajero() {
       // { nombre: nombre, nacionalidad: nacionalidad, edad: edad} al arreglo de compañeros del viajero.
       // No debe retornar nada.
       // Tu código aca:
+      const nuevoCompa = {nombre,nacionalidad,edad};
+      this.compañeros.push(nuevoCompa);
     }
 
     addPais(pais) {
       // El método 'AddPais' recibe un string 'pais' y debe agregarlo al arreglo de paises del viajero.
       // No debe retornar nada.
       // Tu código aca:
+      this.paises.push(pais);
     }
 
     getCompañeros() {
@@ -148,6 +155,11 @@ function crearClaseViajero() {
       // Suponiendo que el viajero tiene estos compañeros: [{nombre: 'John', nacionalidad: "Australiano", edad: 27},{nombre: 'Peter', nacionalidad: "Belga", edad: 23}]
       // viajero.getCompañeros() debería devolver ['John', 'Peter']
       // Tu código aca:
+      let arrayCompas = []
+      for(let i=0 ; i<this.compañeros.length; i++){
+        arrayCompas.push(this.compañeros[i].nombre)
+      }
+      return arrayCompas
     }
 
     getPaises() {
@@ -176,6 +188,12 @@ function crearClaseViajero() {
       // }
       // viajero.getPromedioEdad() debería devolver 25 ya que (27 + 23) / 2 = 25
       // Tu código aca:
+      let suma = 0
+      for (let i=0 ; i<this.compañeros.length ; i++){
+        suma += this.compañeros[i].edad
+      }
+      let numero = suma/this.compañeros.length
+      return Math.round(numero)
     }
   }
 
@@ -205,11 +223,13 @@ function filtrar(funcion) {
 
   let newArray = [];
   Array.prototype.filtrar = function (funcion) {
-    //for (var i = 0; i <= productos.length; i++) {
-    //if (funcion) newArray.push(productos[i])
-    //}
-    return newArray;
-  };
+    for (var i = 0; i < this.length; i++) {
+      if (funcion(this[i])) {
+        newArray.push(this[i]);
+      }
+    }
+  }
+  return newArray;
 }
 
 // No modifiques nada debajo de esta linea
